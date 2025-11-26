@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export default function FasilitasPage() {
   return (
@@ -13,65 +13,47 @@ export default function FasilitasPage() {
       </p>
 
       <div className="space-y-8">
-        {/* CARD: RUANG OPERASI */}
-        <Link
-          href="/fasilitas/ruang-operasi"
-          className="flex flex-col md:flex-row bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
-        >
-          <div className="md:w-1/3 h-56 bg-gray-200 flex items-center justify-center text-gray-500">
-            Foto Ruang Operasi
-          </div>
+        {/* CARD COMPONENT */}
+        {[
+          {
+            title: "Ruang Menyusui",
+            desc: "Ruang menyusui yang nyaman dan privat untuk mendukung ibu dalam memberikan ASI eksklusif kepada bayi.",
+            img: "/image/ruangmenyusui.jpeg",
+          },
+          {
+            title: "Ruang Tunggu",
+            desc: "Area tunggu nyaman, bersih, dan luas agar pasien serta keluarga dapat menunggu dengan lebih tenang.",
+            img: "/image/ruangtunggu.jpeg",
+          },
+          {
+            title: "Musholla",
+            desc: "Musholla bersih dan nyaman untuk menunjang kenyamanan pengunjung selama berada di klinik.",
+            img: "/image/musholla.jpeg",
+          },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+          >
+            {/* FOTO FIXED RATIO */}
+            <div className="relative md:w-1/3 aspect-[4/3] bg-gray-200">
+              <Image
+                src={item.img}
+                alt={item.title}
+                fill
+                className="object-cover"
+              />
+            </div>
 
-          <div className="md:w-2/3 p-6">
-            <h2 className="text-2xl font-semibold text-[#1e2a78]">
-              Ruang Operasi
-            </h2>
-            <p className="text-gray-600 mt-3 leading-relaxed">
-              Ruang operasi steril dilengkapi alat modern untuk menjamin
-              keamanan dan kenyamanan selama tindakan pembedahan.
-            </p>
+            {/* TEXT */}
+            <div className="md:w-2/3 p-6">
+              <h2 className="text-2xl font-semibold text-[#1e2a78]">
+                {item.title}
+              </h2>
+              <p className="text-gray-600 mt-3 leading-relaxed">{item.desc}</p>
+            </div>
           </div>
-        </Link>
-
-        {/* CARD: RUANG TUNGGU */}
-        <Link
-          href="/fasilitas/ruang-tunggu"
-          className="flex flex-col md:flex-row bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
-        >
-          <div className="md:w-1/3 h-56 bg-gray-200 flex items-center justify-center text-gray-500">
-            Foto Ruang Tunggu
-          </div>
-
-          <div className="md:w-2/3 p-6">
-            <h2 className="text-2xl font-semibold text-[#1e2a78]">
-              Ruang Tunggu
-            </h2>
-            <p className="text-gray-600 mt-3 leading-relaxed">
-              Area tunggu nyaman, bersih, dan luas agar pasien serta keluarga
-              dapat menunggu dengan lebih tenang.
-            </p>
-          </div>
-        </Link>
-
-        {/* CARD: PARKIR + MUSHOLLA */}
-        <Link
-          href="/fasilitas/parkir-musholla"
-          className="flex flex-col md:flex-row bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
-        >
-          <div className="md:w-1/3 h-56 bg-gray-200 flex items-center justify-center text-gray-500">
-            Foto Parkir & Musholla
-          </div>
-
-          <div className="md:w-2/3 p-6">
-            <h2 className="text-2xl font-semibold text-[#1e2a78]">
-              Area Parkir & Musholla
-            </h2>
-            <p className="text-gray-600 mt-3 leading-relaxed">
-              Tersedia area parkir luas dan musholla bersih untuk menunjang
-              kenyamanan pengunjung selama berada di klinik.
-            </p>
-          </div>
-        </Link>
+        ))}
       </div>
     </section>
   );

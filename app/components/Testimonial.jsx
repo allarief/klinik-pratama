@@ -4,27 +4,27 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    name: "Pasien A",
-    photo: "/pasienA.jpg", // letakkan foto di public folder
-    message: "Pelayanan klinik sangat ramah dan profesional. Saya merasa nyaman setiap kali berkunjung."
+    name: "Ulfah Azizah",
+    photo: "/image/testi1.jpeg", // letakkan foto di public folder
+    message: "Saya melahirkan di Klinik Al mughni sangat puas dengan pelayanannya. Bidan ramah, proses persalinan dibantu dengan sabar dan fasilitasnya bersih. Terima kasih telah membantu kelahiran buah hati kami."
   },
   {
     id: 2,
-    name: "Pasien B",
-    photo: "/pasienB.jpg",
-    message: "Dokter sangat sabar menjelaskan kondisi saya, hasil pengobatan memuaskan."
+    name: "Ulwan",
+    photo: "/image/testi2.jpeg",
+    message: "Khitan anak kami berjalan lancar. Penanganan cepat, steril, dan hasilnya rapi. Dokter juga memberikan edukasi perawatan yang jelas. Sangat direkomendasikan!"
   },
   {
     id: 3,
-    name: "Pasien C",
-    photo: "/pasienC.jpg",
-    message: "Fasilitas klinik lengkap dan bersih. Sangat direkomendasikan!"
+    name: "Sri Maryati,",
+    photo: "/image/testi3.jpeg",
+    message: "Mulai dari pendaftaran sampai pemeriksaan, semuanya tertata rapi. Dokter profesional, komunikatif, dan memberikan solusi terbaik. Senang sekali menemukan klinik dengan pelayanan sebaik ini."
   },
   {
     id: 4,
-    name: "Pasien D",
-    photo: "/pasienD.jpg",
-    message: "Proses registrasi cepat, dan staf sangat membantu. Pengalaman yang menyenangkan."
+    name: "Weni Maryani",
+    photo: "/image/testi4.jpeg",
+    message: "Kliniknya bersih, rapi, dan nyaman. Pelayanan dari bidan sangat memuaskan."
   }
 ];
 

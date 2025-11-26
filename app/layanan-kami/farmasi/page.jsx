@@ -2,29 +2,29 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function EkgPage() {
-  // Data tenaga medis EKG — boleh diganti dengan dokter/bidan/perawat jantung
-  const ekgTeam = [
+export default function FarmasiPage() {
+  // Data tenaga farmasi
+  const farmasiTeam = [
     {
-      nama: "dr. Rahmat Pratama",
-      fotoProfil: "/ekg/dr-rahmat.jpg",
-      examPhoto: "/ekg/exam-rahmat.jpg",
+      nama: "Apt. Adrena Natalia, S.Farm",
+      fotoProfil: "/image/apoteker1.jpeg",
+      examPhoto: "/image/farmasi1.jpeg",
       deskripsi:
-        "Dokter yang berpengalaman dalam analisis hasil EKG, pemeriksaan jantung dasar, dan deteksi dini gangguan irama jantung.",
+        "Apoteker penanggung jawab yang berpengalaman dalam pelayanan obat, konseling penggunaan obat yang benar, serta pengawasan mutu obat.",
     },
     {
-      nama: "dr. Nabila Fitri",
-      fotoProfil: "/ekg/dr-nabila.jpg",
-      examPhoto: "/ekg/exam-nabila.jpg",
+      nama: "Idham Kholid Nahri, SKM",
+      fotoProfil: "/image/apoteker2.jpeg",
+      examPhoto: "/image/exam-dimas.jpg",
       deskripsi:
-        "Menguasai interpretasi EKG, pemeriksaan kardiovaskular, serta edukasi pencegahan penyakit jantung.",
+        "Asisten apoteker terlatih dalam penyiapan obat, pelayanan resep, dan membantu pasien memahami dosis obat.",
     },
     {
-      nama: "Perawat Ahmad Yusuf",
-      fotoProfil: "/ekg/perawat-yusuf.jpg",
-      examPhoto: "/ekg/exam-yusuf.jpg",
+      nama: "Salsa Sabrina Rahwan",
+      fotoProfil: "/image/apoteker3.jpeg",
+      examPhoto: "/image/farmasi2.jpeg",
       deskripsi:
-        "Perawat terlatih dalam tindakan EKG, pemasangan elektroda, dan pemantauan kondisi pasien saat pemeriksaan.",
+        "Asisten apoteker terlatih dalam penyiapan obat, pelayanan resep, dan membantu pasien memahami dosis obat.",
     },
   ];
 
@@ -49,28 +49,33 @@ export default function EkgPage() {
   return (
     <section className="px-6 py-12 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold text-center mb-8 text-[#1e2a78]">
-        Pelayanan EKG (Electrocardiography)
+        Pelayanan Farmasi
       </h1>
 
       {/* Intro */}
       <div className="bg-white rounded-xl shadow-md p-6 mb-8">
         <p className="text-gray-700 leading-relaxed">
-          Pemeriksaan EKG digunakan untuk melihat aktivitas listrik jantung,
-          mendeteksi gangguan irama, serta memantau kondisi kesehatan jantung.
-          Layanan dilakukan oleh tenaga medis berpengalaman menggunakan alat EKG
-          modern demi hasil yang akurat dan cepat.
+          Pelayanan Farmasi bertujuan memastikan pasien menerima obat yang aman,
+          tepat dosis, dan sesuai kebutuhan medis. Layanan meliputi pelayanan
+          resep, konseling obat, manajemen obat, serta edukasi penggunaan obat
+          yang benar. Tim farmasi kami terdiri dari apoteker dan asisten
+          apoteker berpengalaman untuk mendukung terapi obat secara optimal.
         </p>
       </div>
 
-      {/* Tenaga Medis */}
-      <h2 className="text-2xl font-bold mb-6 text-[#1e2a78]">Tenaga Medis</h2>
+      {/* Tenaga Farmasi */}
+      <h2 className="text-2xl font-bold mb-6 text-[#1e2a78]">
+        Tenaga Farmasi
+      </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {ekgTeam.map((medis, idx) => (
+      {/* Grid 3 kolom + card tinggi sama */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch">
+        {farmasiTeam.map((medis, idx) => (
           <article
             key={idx}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition h-full flex flex-col"
           >
+            {/* Foto profil */}
             <div className="relative w-full h-56">
               <Image
                 src={medis.fotoProfil}
@@ -81,32 +86,27 @@ export default function EkgPage() {
               />
             </div>
 
-            <div className="p-4">
+            {/* Isi card */}
+            <div className="p-4 flex flex-col flex-grow">
               <h3 className="font-semibold text-lg text-[#0b2a66]">
                 {medis.nama}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">{medis.deskripsi}</p>
 
-              <div className="mt-4 flex gap-3">
-                <button
-                  onClick={() =>
-                    openModal(
-                      medis.examPhoto,
-                      `${medis.nama} — Foto Pemeriksaan EKG`
-                    )
-                  }
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1e2a78] text-white text-sm hover:bg-[#16305a] transition"
-                >
-                  Lihat Foto Pemeriksaan
-                </button>
+              <p className="text-sm text-gray-600 mt-1 flex-grow">
+                {medis.deskripsi}
+              </p>
 
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Buat Janji
-                </a>
-              </div>
+              <button
+                onClick={() =>
+                  openModal(
+                    medis.examPhoto,
+                    `${medis.nama} — Foto Pelayanan Farmasi`
+                  )
+                }
+                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1e2a78] text-white text-sm hover:bg-[#16305a] transition"
+              >
+                Lihat Foto Pelayanan
+              </button>
             </div>
           </article>
         ))}
@@ -117,7 +117,6 @@ export default function EkgPage() {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
           role="dialog"
-          aria-modal="true"
         >
           <div className="relative max-w-4xl w-full rounded-xl overflow-hidden bg-white">
             <button

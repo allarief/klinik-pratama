@@ -43,9 +43,8 @@ const Navbar = () => {
                 <summary>Layanan Kami</summary>
                 <ul className="p-2">
                   <li><Link href="/layanan-kami/dokter-umum">Pelayanan Dokter Umum</Link></li>
-                  <li><Link href="/layanan-kami/usg">Pelayanan USG</Link></li>
                   <li><Link href="/layanan-kami/kebidanan">Pelayanan Kebidanan</Link></li>
-                  <li><Link href="/layanan-kami/ekg">Pelayanan EKG</Link></li>
+                  <li><Link href="/layanan-kami/farmasi">Pelayanan Farmasi</Link></li>
                 </ul>
               </details>
             </li>
@@ -76,9 +75,8 @@ const Navbar = () => {
               <summary>Layanan Kami</summary>
               <ul className="p-2">
                 <li><Link href="/layanan-kami/dokter-umum">Pelayanan Dokter Umum</Link></li>
-                <li><Link href="/layanan-kami/usg">Pelayanan USG</Link></li>
                 <li><Link href="/layanan-kami/kebidanan">Pelayanan Kebidanan</Link></li>
-                <li><Link href="/layanan-kami/ekg">Pelayanan EKG</Link></li>
+                <li><Link href="/layanan-kami/farmasi">Pelayanan Farmasi</Link></li>
               </ul>
             </details>
           </li>

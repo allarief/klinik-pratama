@@ -61,13 +61,6 @@ export default function WhyChoose() {
 
       </div>
 
-      {/* Button */}
-      <div className="mt-8 text-center">
-        <button className="btn bg-white text-[#1e2a78] font-semibold px-6 py-2 text-sm">
-          Pelajari Lebih Lanjut
-        </button>
-      </div>
-
     </section>
   );
 }

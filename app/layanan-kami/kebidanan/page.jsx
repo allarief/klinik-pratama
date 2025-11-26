@@ -3,26 +3,26 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function KebidananPage() {
-  // Data Bidan / Dokter Kebidanan
+  // Data Bidan
   const bidanList = [
     {
-      nama: "Bidan Rina Putri, A.Md.Keb",
-      fotoProfil: "/kebidanan/bidan-rina.jpg",
-      examPhoto: "/kebidanan/exam-rina.jpg",
+      nama: "Bidan Shofia Salsabila Aulia, A.Md.Keb",
+      fotoProfil: "/image/bidan1.jpeg",
+      examPhoto: "/image/pemeriksaanbidan1.jpeg",
       deskripsi:
         "Bidan berpengalaman dalam pemeriksaan antenatal, edukasi ibu hamil, serta pemantauan tumbuh kembang janin.",
     },
     {
-      nama: "Bidan Ayu Lestari, S.Tr.Keb",
-      fotoProfil: "/kebidanan/bidan-ayu.jpg",
-      examPhoto: "/kebidanan/exam-ayu.jpg",
+      nama: "Bidan Zhazha Rizkika, Am.Keb",
+      fotoProfil: "/image/bidan2.jpeg",
+      examPhoto: "/image/exam-ayu.jpg",
       deskripsi:
         "Fokus pada perawatan ibu hamil, evaluasi kehamilan, dan penanganan awal komplikasi kehamilan.",
     },
     {
-      nama: "Bidan Sari Melati, A.Md.Keb",
-      fotoProfil: "/kebidanan/bidan-sari.jpg",
-      examPhoto: "/kebidanan/exam-sari.jpg",
+      nama: "Bidan Mulhimmatul Rifa'ah, STr.Keb",
+      fotoProfil: "/image/bidan3.jpeg",
+      examPhoto: "/image/exam-sari.jpg",
       deskripsi:
         "Berpengalaman dalam pemeriksaan masa kehamilan, perawatan pasca melahirkan, dan kesehatan bayi baru lahir.",
     },
@@ -38,6 +38,7 @@ export default function KebidananPage() {
     setOpen(true);
     if (typeof window !== "undefined") document.body.style.overflow = "hidden";
   }
+
   function closeModal() {
     setOpen(false);
     setSelectedPhoto(null);
@@ -66,12 +67,14 @@ export default function KebidananPage() {
         Tenaga Bidan Kami
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Grid Card 3 Kolom */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {bidanList.map((bidan, idx) => (
           <article
             key={idx}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+            className="bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col"
           >
+            {/* Foto */}
             <div className="relative w-full h-56">
               <Image
                 src={bidan.fotoProfil}
@@ -82,43 +85,37 @@ export default function KebidananPage() {
               />
             </div>
 
-            <div className="p-4">
+            {/* Konten */}
+            <div className="p-4 flex flex-col flex-grow">
               <h3 className="font-semibold text-lg text-[#0b2a66]">
                 {bidan.nama}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">{bidan.deskripsi}</p>
 
-              <div className="mt-4 flex gap-3">
-                <button
-                  onClick={() =>
-                    openModal(
-                      bidan.examPhoto,
-                      `${bidan.nama} — Foto Pemeriksaan Kebidanan`
-                    )
-                  }
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1e2a78] text-white text-sm hover:bg-[#16305a] transition"
-                >
-                  Lihat Foto Pemeriksaan
-                </button>
+              <p className="text-sm text-gray-600 mt-1 flex-grow">
+                {bidan.deskripsi}
+              </p>
 
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Buat Janji
-                </a>
-              </div>
+              <button
+                onClick={() =>
+                  openModal(
+                    bidan.examPhoto,
+                    `${bidan.nama} — Foto Pemeriksaan Kebidanan`
+                  )
+                }
+                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1e2a78] text-white text-sm hover:bg-[#16305a] transition"
+              >
+                Lihat Foto Pemeriksaan
+              </button>
             </div>
           </article>
         ))}
       </div>
 
-      {/* Modal / Lightbox */}
+      {/* Modal */}
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
           role="dialog"
-          aria-modal="true"
         >
           <div className="relative max-w-4xl w-full rounded-xl overflow-hidden bg-white">
             <button
@@ -129,6 +126,7 @@ export default function KebidananPage() {
               ✕
             </button>
 
+            {/* Foto Modal */}
             <div className="relative w-full h-[60vh] bg-gray-100">
               <Image
                 src={selectedPhoto}

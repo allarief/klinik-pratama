@@ -5,32 +5,20 @@ import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
 const owners = [
   {
     id: 1,
-    name: "Dr. Arief Santoso",
-    photo: "/owner1.jpg",
-    history: "Dr. Arief mendirikan Klinik Sehat pada tahun 2010 dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.",
-    education: [
-      "S1 Kedokteran Universitas Indonesia",
-      "Spesialis Penyakit Dalam",
-      "Pelatihan Manajemen Klinik di Singapura"
-    ]
+    names: [
+      "H. Cece Nurdin, S.Kep, Ners, MM",
+      "Bdn. Hj. Iis Sadariah, STr.Keb"
+    ],
+    photo: "/image/owner.jpeg",
+    history:
+      "H. Cece Nurdin dan Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.",
   },
-  {
-    id: 2,
-    name: "Dr. Siti Rahma",
-    photo: "/owner2.jpg",
-    history: "Dr. Siti bergabung untuk memperkuat tim medis dan mengembangkan layanan klinik.",
-    education: [
-      "S1 Kedokteran Universitas Gadjah Mada",
-      "Spesialis Anak",
-      "Workshop Kesehatan Masyarakat"
-    ]
-  }
 ];
 
 const socialLinks = {
   instagram: "https://www.instagram.com/akunreel/",
   tiktok: "https://www.tiktok.com/@akunreel/",
-  facebook: "https://www.facebook.com/akunfb/"
+  facebook: "https://www.facebook.com/akunfb/",
 };
 
 const TentangKami = () => {
@@ -39,46 +27,66 @@ const TentangKami = () => {
       <h1 className="text-3xl font-bold mb-8 text-center">Tentang Kami</h1>
 
       {owners.map((owner) => (
-        <div key={owner.id} className="flex flex-col md:flex-row items-center mb-12 bg-white shadow-md rounded-xl p-6">
+        <div
+          key={owner.id}
+          className="flex flex-col md:flex-row items-center mb-12 bg-white shadow-md rounded-xl p-6"
+        >
+          {/* FOTO OWNER */}
           <div className="w-full md:w-1/3 flex justify-center mb-4 md:mb-0">
             <Image
               src={owner.photo}
-              alt={owner.name}
+              alt="Foto Owner"
               width={250}
               height={250}
               className="rounded-full object-cover"
             />
           </div>
+
+          {/* NAMA PEMILIK DI SUSUN KE BAWAH */}
           <div className="w-full md:w-2/3 md:pl-8">
-            <h2 className="text-2xl font-semibold mb-2">{owner.name}</h2>
-            <p className="mb-4 text-gray-700">{owner.history}</p>
-            <h3 className="text-xl font-semibold mb-2">Riwayat Pendidikan:</h3>
-            <ul className="list-disc list-inside text-gray-700">
-              {owner.education.map((edu, index) => (
-                <li key={index}>{edu}</li>
+            <div className="text-2xl font-semibold mb-2 leading-relaxed">
+              {owner.names.map((person, idx) => (
+                <div key={idx}>{person}</div>
               ))}
-            </ul>
+            </div>
+
+            <p className="mb-4 text-gray-700">{owner.history}</p>
           </div>
         </div>
       ))}
 
-      {/* Sosial Media Section */}
+      {/* SOSIAL MEDIA */}
       <div className="mt-8 text-center">
         <p className="text-lg font-semibold mb-4">Follow us:</p>
         <div className="flex justify-center space-x-6">
-          <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-pink-500 text-3xl hover:text-pink-400">
+          <a
+            href={socialLinks.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-pink-500 text-3xl hover:text-pink-400"
+          >
             <FaInstagram />
           </a>
-          <a href={socialLinks.tiktok} target="_blank" rel="noopener noreferrer" className="text-black text-3xl hover:text-gray-700">
+          <a
+            href={socialLinks.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black text-3xl hover:text-gray-700"
+          >
             <FaTiktok />
           </a>
-          <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-3xl hover:text-blue-500">
+          <a
+            href={socialLinks.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 text-3xl hover:text-blue-500"
+          >
             <FaFacebook />
           </a>
         </div>
       </div>
 
-      {/* Google Map Section */}
+      {/* GOOGLE MAP */}
       <div className="mt-12 text-center">
         <p className="text-lg font-semibold mb-4">Kunjungi kami:</p>
         <div className="w-full flex justify-center">

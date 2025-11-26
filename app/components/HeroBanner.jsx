@@ -17,15 +17,10 @@ export default function HeroBanner() {
           </p>
 
           <div className="mt-6 flex gap-4">
-            <a
-              href="#"
-              className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-            >
-                Buat Janji
-            </a>
+
 
             <a
-              href="#"
+              href="fasil"
               className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-100 transition"
             >
                 Pelajari Lebih Lanjut
@@ -36,7 +31,7 @@ export default function HeroBanner() {
         {/* Image Section */}
         <div className="flex-1 flex justify-center">
           <img
-            src="/banner1.jpeg"
+            src="/image/banner2.jpeg"
             alt="Banner"
             className="rounded-xl shadow-lg w-full max-w-md"
           />

@@ -15,10 +15,8 @@ const Footer = () => {
         <div className="flex flex-col space-y-2">
           <h3 className="font-semibold text-lg">Navigasi</h3>
           <a href="/" className="hover:text-blue-400 transition">Beranda</a>
-          <a href="/tentangkami" className="hover:text-blue-400 transition">Tentang Kami</a>
+          <a href="/tentang-kami" className="hover:text-blue-400 transition">Tentang Kami</a>
           <a href="/fasilitas" className="hover:text-blue-400 transition">Fasilitas</a>
-          <a href="/testimoni" className="hover:text-blue-400 transition">Testimoni</a>
-          <a href="/kontak" className="hover:text-blue-400 transition">Kontak</a>
         </div>
 
         {/* Kontak & Sosial Media */}
@@ -27,13 +25,28 @@ const Footer = () => {
           <p>Email: info@klinikalmughni.com</p>
           <p>Telp: +62 812 3456 7890</p>
           <div className="flex space-x-4 mt-2">
-            <a href="https://www.instagram.com/akunreel/" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 text-2xl">
+            <a
+              href="https://www.instagram.com/almughnitsm?igsh=MThrOGFidnB4Y2twMw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-400 text-2xl"
+            >
               <FaInstagram />
             </a>
-            <a href="https://www.tiktok.com/@akunreel/" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-400 text-2xl">
+            <a
+              href="https://www.tiktok.com/@akunreel/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-gray-400 text-2xl"
+            >
               <FaTiktok />
             </a>
-            <a href="https://www.facebook.com/akunfb/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-400 text-2xl">
+            <a
+              href="https://www.facebook.com/akunfb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-400 text-2xl"
+            >
               <FaFacebook />
             </a>
           </div>
