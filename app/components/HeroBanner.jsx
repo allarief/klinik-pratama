@@ -31,7 +31,7 @@ export default function HeroBanner() {
         {/* Image Section */}
         <div className="flex-1 flex justify-center">
           <img
-            src="/image/banner2.jpeg"
+            src="/image/owner.jpeg"
             alt="Banner"
             className="rounded-xl shadow-lg w-full max-w-md"
           />
