@@ -30,11 +30,10 @@ const TentangKami = () => {
 
           {/* NAMA OWNER */}
           <div className="text-center md:text-left">
-            <p className="text-2xl font-semibold">H. Cece Nurdin, S.Kep, Ners, MM</p>
             <p className="text-2xl font-semibold">Bdn. Hj. Iis Sadariah, STr.Keb</p>
 
             <p className="mt-2 text-gray-600">
-              H. Cece Nurdin dan Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni
+              Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni
               dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.
             </p>
           </div>
@@ -199,25 +198,18 @@ const TentangKami = () => {
           <p className="text-lg font-semibold mb-3">Follow Us:</p>
           <div className="flex justify-center gap-6 text-3xl">
             <a
-              href="https://www.instagram.com/akunreel/"
+              href="https://www.instagram.com/almughnitsm?igsh=MThrOGFidnB4Y2twMw=="
               target="_blank"
               className="text-pink-500 hover:scale-110 transition"
             >
               <FaInstagram />
             </a>
             <a
-              href="https://www.tiktok.com/@akunreel/"
+              href="https://www.tiktok.com/@klinik.almughni?_r=1&_t=ZS-91uFnhQjZOX"
               target="_blank"
               className="text-black hover:scale-110 transition"
             >
               <FaTiktok />
-            </a>
-            <a
-              href="https://www.facebook.com/akunfb/"
-              target="_blank"
-              className="text-blue-600 hover:scale-110 transition"
-            >
-              <FaFacebook />
             </a>
           </div>
         </div>

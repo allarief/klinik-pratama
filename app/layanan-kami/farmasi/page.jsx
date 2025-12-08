@@ -3,28 +3,22 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function FarmasiPage() {
-  // Data tenaga farmasi
-  const farmasiTeam = [
+  const farmasiList = [
     {
       nama: "Apt. Adrena Natalia, S.Farm",
       fotoProfil: "/image/apoteker1.jpeg",
       examPhoto: "/image/farmasi1.jpeg",
       deskripsi:
         "Apoteker penanggung jawab yang berpengalaman dalam pelayanan obat, konseling penggunaan obat yang benar, serta pengawasan mutu obat.",
-    },
-    {
-      nama: "Idham Kholid Nahri, SKM",
-      fotoProfil: "/image/apoteker2.jpeg",
-      examPhoto: "/image/exam-dimas.jpg",
-      deskripsi:
-        "Asisten apoteker terlatih dalam penyiapan obat, pelayanan resep, dan membantu pasien memahami dosis obat.",
+      label: "Apoteker",
     },
     {
       nama: "Salsa Sabrina Rahwan",
       fotoProfil: "/image/apoteker3.jpeg",
-      examPhoto: "/image/farmasi2.jpeg",
+      examPhoto: "/image/pelapt1.jpeg",
       deskripsi:
         "Asisten apoteker terlatih dalam penyiapan obat, pelayanan resep, dan membantu pasien memahami dosis obat.",
+      label: "Asisten Apoteker",
     },
   ];
 
@@ -47,63 +41,62 @@ export default function FarmasiPage() {
   }
 
   return (
-    <section className="px-6 py-12 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-8 text-[#1e2a78]">
+    <section className="px-6 py-16 max-w-6xl mx-auto">
+      {/* Judul */}
+      <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
         Pelayanan Farmasi
       </h1>
 
-      {/* Intro */}
-      <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-        <p className="text-gray-700 leading-relaxed">
-          Pelayanan Farmasi bertujuan memastikan pasien menerima obat yang aman,
-          tepat dosis, dan sesuai kebutuhan medis. Layanan meliputi pelayanan
-          resep, konseling obat, manajemen obat, serta edukasi penggunaan obat
-          yang benar. Tim farmasi kami terdiri dari apoteker dan asisten
-          apoteker berpengalaman untuk mendukung terapi obat secara optimal.
-        </p>
-      </div>
+      <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        Pelayanan farmasi untuk memastikan keamanan, ketepatan dosis, edukasi,
+        serta pendampingan terapi obat. Ditangani oleh apoteker dan asisten
+        apoteker profesional.
+      </p>
 
-      {/* Tenaga Farmasi */}
-      <h2 className="text-2xl font-bold mb-6 text-[#1e2a78]">
-        Tenaga Farmasi
+      {/* List Tim Farmasi */}
+      <h2 className="text-2xl font-bold mb-8 text-green-700">
+        Tenaga Farmasi Kami
       </h2>
 
-      {/* Grid 3 kolom + card tinggi sama */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch">
-        {farmasiTeam.map((medis, idx) => (
+      <div className="space-y-10">
+        {farmasiList.map((farmasi, idx) => (
           <article
             key={idx}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition h-full flex flex-col"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col md:flex-row"
           >
-            {/* Foto profil */}
-            <div className="relative w-full h-56">
+            {/* FOTO PROFIL */}
+            <div className="relative w-full h-64 md:w-1/3 md:h-auto bg-white flex items-center justify-center">
               <Image
-                src={medis.fotoProfil}
-                alt={medis.nama}
+                src={farmasi.fotoProfil}
+                alt={farmasi.nama}
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-contain p-4"
               />
+
+              {/* Label */}
+              <span className="absolute top-3 left-3 bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow">
+                {farmasi.label}
+              </span>
             </div>
 
-            {/* Isi card */}
-            <div className="p-4 flex flex-col flex-grow">
-              <h3 className="font-semibold text-lg text-[#0b2a66]">
-                {medis.nama}
+            {/* Content */}
+            <div className="p-6 md:w-2/3 flex flex-col justify-center">
+              <h3 className="font-semibold text-2xl text-green-800">
+                {farmasi.nama}
               </h3>
 
-              <p className="text-sm text-gray-600 mt-1 flex-grow">
-                {medis.deskripsi}
+              <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                {farmasi.deskripsi}
               </p>
 
               <button
                 onClick={() =>
                   openModal(
-                    medis.examPhoto,
-                    `${medis.nama} — Foto Pelayanan Farmasi`
+                    farmasi.examPhoto,
+                    `${farmasi.nama} — Suasana Pelayanan Farmasi`
                   )
                 }
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1e2a78] text-white text-sm hover:bg-[#16305a] transition"
+                className="mt-5 w-full md:w-fit px-6 py-2.5 rounded-lg bg-green-600 text-white font-medium hover:bg-green-700 transition"
               >
                 Lihat Foto Pelayanan
               </button>
@@ -112,22 +105,23 @@ export default function FarmasiPage() {
         ))}
       </div>
 
-      {/* Modal / Lightbox */}
+      {/* MODAL */}
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
           role="dialog"
+          aria-modal="true"
         >
-          <div className="relative max-w-4xl w-full rounded-xl overflow-hidden bg-white">
+          <div className="relative max-w-4xl w-full rounded-2xl overflow-hidden bg-white shadow-xl">
             <button
               onClick={closeModal}
               aria-label="Close"
-              className="absolute top-3 right-3 z-20 bg-white rounded-full p-1 shadow hover:bg-gray-100"
+              className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition"
             >
               ✕
             </button>
 
-            <div className="relative w-full h-[60vh] bg-gray-100">
+            <div className="relative w-full aspect-[4/3] bg-gray-100">
               <Image
                 src={selectedPhoto}
                 alt={selectedCaption}
@@ -136,11 +130,9 @@ export default function FarmasiPage() {
               />
             </div>
 
-            {selectedCaption && (
-              <div className="p-4 border-t">
-                <p className="text-sm text-gray-700">{selectedCaption}</p>
-              </div>
-            )}
+            <div className="p-4 border-t">
+              <p className="text-sm text-gray-800">{selectedCaption}</p>
+            </div>
           </div>
         </div>
       )}

@@ -3,59 +3,90 @@ import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-8 pb-4">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gradient-to-b from-green-900 to-green-800 text-white pt-12 pb-6">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+
         {/* Logo / Klinik */}
-        <div className="flex flex-col space-y-2">
-          <h2 className="text-2xl font-bold">Klinik Al-Mughni</h2>
-          <p className="text-gray-400">Memberikan pelayanan kesehatan terbaik untuk keluarga Anda.</p>
+        <div>
+          <h2 className="text-3xl font-bold text-buttercup-300">Klinik Al-Mughni</h2>
+          <p className="text-gray-200 mt-3 leading-relaxed">
+            Memberikan pelayanan kesehatan terbaik, aman, dan profesional
+            untuk keluarga Anda.
+          </p>
         </div>
 
         {/* Navigasi */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="font-semibold text-lg">Navigasi</h3>
-          <a href="/" className="hover:text-blue-400 transition">Beranda</a>
-          <a href="/tentang-kami" className="hover:text-blue-400 transition">Tentang Kami</a>
-          <a href="/fasilitas" className="hover:text-blue-400 transition">Fasilitas</a>
+        <div>
+          <h3 className="text-lg font-semibold mb-3 text-buttercup-300">
+            Navigasi
+          </h3>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="/"
+                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
+              >
+                Beranda
+              </a>
+            </li>
+            <li>
+              <a
+                href="/tentang-kami"
+                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
+              >
+                Tentang Kami
+              </a>
+            </li>
+            <li>
+              <a
+                href="/fasilitas"
+                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
+              >
+                Fasilitas
+              </a>
+            </li>
+          </ul>
         </div>
 
         {/* Kontak & Sosial Media */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="font-semibold text-lg">Kontak & Media Sosial</h3>
-          <p>Email: info@klinikalmughni.com</p>
-          <p>Telp: +62 812 3456 7890</p>
-          <div className="flex space-x-4 mt-2">
+        <div>
+          <h3 className="text-lg font-semibold mb-3 text-buttercup-300">
+            Kontak & Media Sosial
+          </h3>
+
+          <p className="text-gray-200">Email: info@klinikalmughni.com</p>
+          <p className="text-gray-200 mt-1">Telp: 08156012251</p>
+
+          <div className="flex space-x-4 mt-4">
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/almughnitsm?igsh=MThrOGFidnB4Y2twMw=="
               target="_blank"
               rel="noopener noreferrer"
-              className="text-pink-500 hover:text-pink-400 text-2xl"
+              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow 
+                         ring-2 ring-white/10 hover:ring-white/30 text-pink-400 hover:text-pink-300"
             >
-              <FaInstagram />
+              <FaInstagram size={22} />
             </a>
+
+            {/* TikTok */}
             <a
-              href="https://www.tiktok.com/@akunreel/"
+              href="https://www.tiktok.com/@klinik.almughni?_r=1&_t=ZS-91uFnhQjZOX"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-400 text-2xl"
+              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow 
+                        ring-2 ring-white/10 hover:ring-white/30 text-gray-200 hover:text-white"
             >
-              <FaTiktok />
+              <FaTiktok size={22} />
             </a>
-            <a
-              href="https://www.facebook.com/akunfb/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-400 text-2xl"
-            >
-              <FaFacebook />
-            </a>
+
           </div>
         </div>
       </div>
 
-      {/* Hak cipta */}
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-gray-400 text-sm">
-        &copy; {new Date().getFullYear()} Klinik Al-Mughni. Semua hak cipta dilindungi.
+      {/* Hak Cipta */}
+      <div className="mt-10 border-t border-white/20 pt-4 text-center text-gray-300 text-sm">
+        &copy; {new Date().getFullYear()} Klinik Al-Mughni — Semua Hak Cipta Dilindungi.
       </div>
     </footer>
   );
