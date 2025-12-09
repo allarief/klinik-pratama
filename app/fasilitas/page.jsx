@@ -32,6 +32,11 @@ export default function FasilitasPage() {
             desc: "Musholla bersih dan nyaman untuk menunjang kenyamanan pengunjung selama berada di klinik.",
             img: "/image/musholla.jpeg",
           },
+          {
+            title: "Parkir Luas",
+            desc: "Area parkir yang luas dan aman untuk kenyamanan pengunjung klinik.",
+            img: "/image/parkir.jpeg",
+          },
         ].map((item, i) => (
           <div
             key={i}

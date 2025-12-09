@@ -8,7 +8,7 @@ export default function KebidananPage() {
     {
       nama: "Bidan Shofia Salsabila Aulia, A.Md.Keb",
       fotoProfil: "/image/bidan1.jpeg",
-      examPhoto: "/image/pemeriksaanbidan1.jpeg",
+      examPhoto: "/image/pelbdn6.jpeg",
       deskripsi:
         "Bidan berpengalaman dalam pemeriksaan antenatal, edukasi ibu hamil, serta pemantauan tumbuh kembang janin.",
     },

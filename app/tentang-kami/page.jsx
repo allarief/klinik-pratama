@@ -2,24 +2,31 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { Document, Page, pdfjs } from "react-pdf";
+
+// Set worker untuk react-pdf
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.js"; // pastikan file pdf.worker.js ada di folder public
 
 const TentangKami = () => {
   const [openSection, setOpenSection] = useState(null);
+  const [numPages, setNumPages] = useState(null);
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? null : section);
   };
 
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-center">Tentang Kami</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-green-700">Tentang Kami</h1>
 
       {/* CARD OWNER */}
       <div className="bg-white shadow-lg rounded-2xl p-8">
         <div className="flex flex-col md:flex-row items-center gap-6">
-
-          {/* FOTO OWNER */}
           <Image
             src="/image/owner.jpeg"
             alt="Foto Owner"
@@ -27,24 +34,17 @@ const TentangKami = () => {
             height={260}
             className="rounded-full object-cover shadow-md"
           />
-
-          {/* NAMA OWNER */}
           <div className="text-center md:text-left">
-            <p className="text-2xl font-semibold">Bdn. Hj. Iis Sadariah, STr.Keb</p>
-
+            <p className="text-2xl font-semibold text-green-700">Bdn. Hj. Iis Sadariah, STr.Keb</p>
             <p className="mt-2 text-gray-600">
-              Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni
-              dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.
+              Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.
             </p>
           </div>
         </div>
 
-        {/* GARIS PEMBATAS */}
         <div className="my-6 border-t"></div>
 
-        {/* === DETAIL DATA OWNER === */}
         <div className="space-y-3">
-
           {/* BIODATA */}
           <div className="border rounded-xl p-4 bg-gray-50">
             <button
@@ -53,7 +53,6 @@ const TentangKami = () => {
             >
               Biodata Singkat
             </button>
-
             {openSection === "biodata" && (
               <div className="mt-3 text-gray-700">
                 <p>Nama: Bdn. Hj Iis Sadariah, STr.Keb</p>
@@ -71,12 +70,10 @@ const TentangKami = () => {
             >
               Latar Belakang Pendidikan
             </button>
-
             {openSection === "pendidikan" && (
               <div className="mt-3 text-gray-700 space-y-1">
                 <p>• D4 Kebidanan – Poltekkes Kemenkes Tasikmalaya – 2018</p>
                 <p>• S1 Kebidanan & Profesi Bidan – Poltekkes Kemenkes Tasikmalaya – 2023</p>
-
                 <p className="font-semibold mt-2">Pelatihan & Workshop:</p>
                 <p>• Seminar Inisiasi Menyusui Dini – 2007</p>
                 <p>• Pelatihan Asuhan Persalinan Normal (APN) – 2007</p>
@@ -103,7 +100,6 @@ const TentangKami = () => {
             >
               Pengalaman Kerja
             </button>
-
             {openSection === "pengalaman" && (
               <div className="mt-3 text-gray-700 space-y-1">
                 <p>• Bidan Praktik Mandiri sejak 1992</p>
@@ -122,7 +118,6 @@ const TentangKami = () => {
             >
               Motivasi & Filosofi Pelayanan
             </button>
-
             {openSection === "motivasi" && (
               <div className="mt-3 text-gray-700">
                 “Memberikan pelayanan kesehatan yang ramah, aman, dan manusiawi
@@ -140,7 +135,6 @@ const TentangKami = () => {
             >
               Keahlian & Kompetensi
             </button>
-
             {openSection === "keahlian" && (
               <div className="mt-3 text-gray-700 space-y-1">
                 <p>• Asuhan Kehamilan (ANC)</p>
@@ -164,7 +158,6 @@ const TentangKami = () => {
             >
               Profil Klinik Al-Mughni
             </button>
-
             {openSection === "klinik" && (
               <div className="mt-3 text-gray-700 space-y-1">
                 <p className="font-semibold">Jenis Pelayanan:</p>
@@ -180,10 +173,8 @@ const TentangKami = () => {
                 <p>• Perawatan Ibu & Bayi</p>
                 <p>• Tumbuh Kembang</p>
                 <p>• Foto Shoot Bayi</p>
-
                 <p className="font-semibold mt-2">Visi:</p>
                 <p>“Mewujudkan SDM berkualitas untuk menunjang pembangunan nasional.”</p>
-
                 <p className="font-semibold mt-2">Misi:</p>
                 <p>• Pelayanan kesehatan prima sesuai standar medis</p>
                 <p>• Memberikan solusi dalam masalah kesehatan</p>
@@ -191,6 +182,51 @@ const TentangKami = () => {
               </div>
             )}
           </div>
+
+          {/* SEJARAH KLINIK */}
+          <div className="border rounded-xl p-4 bg-green-50 hover:bg-green-100 transition">
+            <button
+              className="w-full text-left font-semibold text-lg flex justify-between items-center"
+              onClick={() => toggleSection("sejarah")}
+            >
+              Sejarah Klinik Al-Mughni
+              <span>{openSection === "sejarah" ? "−" : "+"}</span>
+            </button>
+            {openSection === "sejarah" && (
+              <div className="mt-3 text-gray-700 space-y-2">
+                <p>Sejak tahun 2014 berdiri sebagai Balai Pengobatan dan Praktek Mandiri Bidan.</p>
+                <p>Sejalan waktu pada tahun 2024 menjadi sebuah Klinik Pratama Almughni dengan nama badan usaha Yayasan Berkah Kafi Mughni.</p>
+                <p>Pada tanggal 10 Agustus 2025 telah mendapat pengakuan sebagai fasilitas pelayanan kesehatan yang memenuhi standar akreditasi dengan PARIPURNA.</p>
+              </div>
+            )}
+          </div>
+
+          {/* SERTIFIKAT */}
+<div className="border rounded-xl p-4 bg-gray-50">
+  <button
+    className="w-full text-left font-semibold text-lg flex justify-between items-center"
+    onClick={() => toggleSection("sertifikat")}
+  >
+    Sertifikat & Penghargaan
+    <span>{openSection === "sertifikat" ? "−" : "+"}</span>
+  </button>
+  {openSection === "sertifikat" && (
+    <div className="mt-3 text-gray-700 space-y-3">
+      <div className="w-full flex flex-col gap-4">
+        {/* Ganti src sesuai nama file gambar di folder public */}
+        <Image
+          src="/sertifikat.png"
+          width={800}
+          height={1000}
+          alt="Sertifikat 1"
+          className="border rounded-md shadow-sm mx-auto"
+        />
+      </div>
+    </div>
+  )}
+</div>
+
+
         </div>
 
         {/* SOSIAL MEDIA */}
@@ -217,7 +253,6 @@ const TentangKami = () => {
         {/* GOOGLE MAP */}
         <div className="mt-12 text-center">
           <p className="text-lg font-semibold mb-4">Kunjungi Kami:</p>
-
           <div className="w-full flex justify-center">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63318.22920429192!2d108.1736123948036!3d-7.310084795682169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f51915d7c1e3b%3A0x18c41c28154a5cc0!2sKlinik%20Al-Mughni!5e0!3m2!1sid!2sid!4v1763809907781!5m2!1sid!2sid"

@@ -6,6 +6,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
 
+  const toggleDropdown = () => setOpenDropdown(!openDropdown);
+
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
       <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -39,20 +41,59 @@ export default function Navbar() {
         <ul className="hidden lg:flex items-center gap-8 font-medium">
           <li><Link href="/" className="hover:text-green-700">Home</Link></li>
 
-          {/* Dropdown Stable */}
-          <li
-            className="relative"
-            onMouseEnter={() => setOpenDropdown(true)}
-            onMouseLeave={() => setOpenDropdown(false)}
-          >
-            <button className="hover:text-green-700">Layanan Kami</button>
+          {/* Dropdown Klik */}
+          <li className="relative">
+            <button
+              onClick={toggleDropdown}
+              className="hover:text-green-700 flex items-center gap-1"
+            >
+              Layanan Kami
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${openDropdown ? "rotate-180" : ""}`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
             {openDropdown && (
               <ul className="absolute bg-white shadow-lg rounded-lg p-3 mt-2 w-56 border border-gray-100">
-                <li><Link href="/layanan-kami/dokter-umum" className="block px-3 py-2 hover:bg-green-50">Pelayanan Dokter Umum</Link></li>
-                <li><Link href="/layanan-kami/kebidanan" className="block px-3 py-2 hover:bg-green-50">Pelayanan Kebidanan</Link></li>
-                <li><Link href="/layanan-kami/keperawatan" className="block px-3 py-2 hover:bg-green-50">Pelayanan Keperawatan</Link></li>
-                <li><Link href="/layanan-kami/farmasi" className="block px-3 py-2 hover:bg-green-50">Pelayanan Farmasi</Link></li>
+                <li>
+                  <Link
+                    href="/layanan-kami/dokter-umum"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan Dokter Umum
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/kebidanan"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan Kebidanan
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/keperawatan"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan Keperawatan
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/farmasi"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan Farmasi
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
@@ -77,7 +118,6 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white shadow-md border-t">
           <ul className="px-6 pt-3 pb-6 space-y-4 font-medium">
-
             <li><Link href="/" onClick={() => setOpen(false)}>Home</Link></li>
 
             <li>
