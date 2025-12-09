@@ -3,26 +3,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { FaInstagram, FaTiktok } from "react-icons/fa";
-import { Document, Page, pdfjs } from "react-pdf";
-
-// Set worker untuk react-pdf
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.js"; // pastikan file pdf.worker.js ada di folder public
 
 const TentangKami = () => {
   const [openSection, setOpenSection] = useState(null);
-  const [numPages, setNumPages] = useState(null);
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? null : section);
   };
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
-
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8 text-center text-green-700">Tentang Kami</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-green-700">
+        Tentang Kami
+      </h1>
 
       {/* CARD OWNER */}
       <div className="bg-white shadow-lg rounded-2xl p-8">
@@ -35,9 +28,12 @@ const TentangKami = () => {
             className="rounded-full object-cover shadow-md"
           />
           <div className="text-center md:text-left">
-            <p className="text-2xl font-semibold text-green-700">Bdn. Hj. Iis Sadariah, STr.Keb</p>
+            <p className="text-2xl font-semibold text-green-700">
+              Bdn. Hj. Iis Sadariah, STr.Keb
+            </p>
             <p className="mt-2 text-gray-600">
-              Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni dengan tujuan memberikan pelayanan kesehatan terbaik bagi masyarakat.
+              Bdn. Hj. Iis Sadariah mendirikan Klinik Al-Mughni dengan tujuan
+              memberikan pelayanan kesehatan terbaik bagi masyarakat.
             </p>
           </div>
         </div>
@@ -202,30 +198,29 @@ const TentangKami = () => {
           </div>
 
           {/* SERTIFIKAT */}
-<div className="border rounded-xl p-4 bg-gray-50">
-  <button
-    className="w-full text-left font-semibold text-lg flex justify-between items-center"
-    onClick={() => toggleSection("sertifikat")}
-  >
-    Sertifikat & Penghargaan
-    <span>{openSection === "sertifikat" ? "−" : "+"}</span>
-  </button>
-  {openSection === "sertifikat" && (
-    <div className="mt-3 text-gray-700 space-y-3">
-      <div className="w-full flex flex-col gap-4">
-        {/* Ganti src sesuai nama file gambar di folder public */}
-        <Image
-          src="/sertifikat.png"
-          width={800}
-          height={1000}
-          alt="Sertifikat 1"
-          className="border rounded-md shadow-sm mx-auto"
-        />
-      </div>
-    </div>
-  )}
-</div>
-
+          <div className="border rounded-xl p-4 bg-gray-50">
+            <button
+              className="w-full text-left font-semibold text-lg flex justify-between items-center"
+              onClick={() => toggleSection("sertifikat")}
+            >
+              Sertifikat & Penghargaan
+              <span>{openSection === "sertifikat" ? "−" : "+"}</span>
+            </button>
+            {openSection === "sertifikat" && (
+              <div className="mt-3 text-gray-700 space-y-3">
+                <p>Berikut sertifikat yang dimiliki:</p>
+                <div className="w-full flex justify-center mt-2">
+                  <Image
+                    src="/sertifikat.png"
+                    alt="Sertifikat 1"
+                    width={800}
+                    height={600}
+                    className="rounded-md shadow-sm w-full max-w-xl h-auto object-contain"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
 
         </div>
 
