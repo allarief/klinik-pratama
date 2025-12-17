@@ -8,6 +8,11 @@ generator client {
 }
 
 model WebsiteVisit {
-  id    Int    @id @default(1)
-  total BigInt @default(0)
+  id        Int      @id
+  total     BigInt   @default(0)
+  daily     Int      @default(0)
+  weekly    Int      @default(0)
+  monthly   Int      @default(0)
+  yearly    Int      @default(0)
+  lastHit   DateTime @default(now())
 }

@@ -13,7 +13,7 @@ const Footer = () => {
           cache: "no-store",
         });
         const data = await res.json();
-        setVisits(data.visits);
+        setVisits(data);
       } catch (error) {
         console.error("Failed to fetch visitor count:", error);
       }
@@ -111,11 +111,18 @@ const Footer = () => {
       </div>
 
       {/* Visitor Counter */}
-      <div className="mt-2 text-center text-gray-300 text-sm">
-        👁️ Total Pengunjung:&nbsp;
-        <span className="font-semibold text-white">
-          {visits !== null ? visits.toLocaleString("id-ID") : "..."}
-        </span>
+      <div className="mt-3 text-center text-gray-300 text-sm space-y-1">
+        <div>
+          👁️ Total Pengunjung:{" "}
+          <span className="font-semibold text-white">
+            {visits ? visits.total.toLocaleString("id-ID") : "..."}
+          </span>
+        </div>
+
+        <div>📅 Hari ini: {visits?.daily ?? "..."}</div>
+        <div>📊 Minggu ini: {visits?.weekly ?? "..."}</div>
+        <div>🗓️ Bulan ini: {visits?.monthly ?? "..."}</div>
+        <div>📈 Tahun ini: {visits?.yearly ?? "..."}</div>
       </div>
     </footer>
   );
