@@ -1,14 +1,36 @@
-import React from "react";
-import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { FaInstagram, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
+  const [visits, setVisits] = useState(null);
+
+  useEffect(() => {
+    async function fetchVisits() {
+      try {
+        const res = await fetch("/api/visit", {
+          cache: "no-store",
+        });
+        const data = await res.json();
+        setVisits(data.visits);
+      } catch (error) {
+        console.error("Failed to fetch visitor count:", error);
+      }
+    }
+
+    fetchVisits();
+  }, []);
+
   return (
     <footer className="bg-gradient-to-b from-green-900 to-green-800 text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {/* Logo / Klinik */}
         <div>
-          <h2 className="text-3xl font-bold text-buttercup-300">Klinik Al-Mughni</h2>
+          <h2 className="text-3xl font-bold text-buttercup-300">
+            Klinik Al-Mughni
+          </h2>
           <p className="text-gray-200 mt-3 leading-relaxed">
             Memberikan pelayanan kesehatan terbaik, aman, dan profesional
             untuk keluarga Anda.
@@ -75,11 +97,10 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow 
-                        ring-2 ring-white/10 hover:ring-white/30 text-gray-200 hover:text-white"
+                         ring-2 ring-white/10 hover:ring-white/30 text-gray-200 hover:text-white"
             >
               <FaTiktok size={22} />
             </a>
-
           </div>
         </div>
       </div>
@@ -87,6 +108,14 @@ const Footer = () => {
       {/* Hak Cipta */}
       <div className="mt-10 border-t border-white/20 pt-4 text-center text-gray-300 text-sm">
         &copy; {new Date().getFullYear()} Klinik Al-Mughni — Semua Hak Cipta Dilindungi.
+      </div>
+
+      {/* Visitor Counter */}
+      <div className="mt-2 text-center text-gray-300 text-sm">
+        👁️ Total Pengunjung:&nbsp;
+        <span className="font-semibold text-white">
+          {visits !== null ? visits.toLocaleString("id-ID") : "..."}
+        </span>
       </div>
     </footer>
   );
