@@ -21,7 +21,7 @@ const TentangKami = () => {
       <div className="bg-white shadow-lg rounded-2xl p-8">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <Image
-            src="/image/owner.jpeg"
+            src="/image/owner3.jpeg"
             alt="Foto Owner"
             width={260}
             height={260}

@@ -6,11 +6,18 @@ import Image from "next/image";
 export default function KebidananPage() {
   const bidanList = [
     {
-      nama: "Bidan Shofia Salsabila Aulia, A.Md.Keb",
-      fotoProfil: "/image/bidan1.jpeg",
-      examPhoto: "/image/pelbdn6.jpeg",
+      nama: "Bidan Hj. Iis Sadariah,STR Keb.",
+      fotoProfil: "/image/bdn4.jpeg",
+      examPhoto: "/image/pelbdn5.jpg",
       deskripsi:
-        "Bidan berpengalaman dalam pemeriksaan antenatal, edukasi ibu hamil, serta pemantauan tumbuh kembang janin.",
+        "fokus pada pelayanan kebidanan komprehensif mulai dari kehamilan hingga persalinan dan perawatan pasca melahirkan.",
+    },
+    {
+      nama: "Bidan Ani Lismawati, AM.Keb, SKM",
+      fotoProfil: "/image/bdn5.jpeg",
+      examPhoto: "/image/pelbdn4.jpeg",
+      deskripsi:
+        "Spesialis dalam pendampingan persalinan normal, edukasi laktasi, dan perawatan ibu nifas.",
     },
     {
       nama: "Bidan Zhazha Rizkika, Am.Keb",
@@ -27,18 +34,11 @@ export default function KebidananPage() {
         "Berpengalaman dalam pemeriksaan masa kehamilan, perawatan pasca melahirkan, dan kesehatan bayi baru lahir.",
     },
     {
-      nama: "Bidan Ani Lismawati, AM.Keb, SKM",
-      fotoProfil: "/image/bdn5.jpeg",
-      examPhoto: "/image/pelbdn4.jpeg",
+      nama: "Bidan Shofia Salsabila Aulia, A.Md.Keb",
+      fotoProfil: "/image/bidan1.jpeg",
+      examPhoto: "/image/pelbdn6.jpeg",
       deskripsi:
-        "Spesialis dalam pendampingan persalinan normal, edukasi laktasi, dan perawatan ibu nifas.",
-    },
-    {
-      nama: "Bidan Hj. Iis Sadariah,STR Keb.",
-      fotoProfil: "/image/bdn4.jpeg",
-      examPhoto: "/image/pelbdn5.jpg",
-      deskripsi:
-        "fokus pada pelayanan kebidanan komprehensif mulai dari kehamilan hingga persalinan dan perawatan pasca melahirkan.",
+        "Bidan berpengalaman dalam pemeriksaan antenatal, edukasi ibu hamil, serta pemantauan tumbuh kembang janin.",
     },
   ];
 

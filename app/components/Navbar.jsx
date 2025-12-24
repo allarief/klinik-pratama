@@ -78,11 +78,11 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link
-                    href="/layanan-kami/keperawatan"
+                    href="/layanan-kami/ugd"
                     className="block px-3 py-2 hover:bg-green-50"
                     onClick={() => setOpenDropdown(false)}
                   >
-                    Pelayanan Keperawatan
+                    Pelayanan UGD 24 Jam
                   </Link>
                 </li>
                 <li>
@@ -126,7 +126,7 @@ export default function Navbar() {
                 <ul className="mt-2 pl-5 space-y-2">
                   <li><Link href="/layanan-kami/dokter-umum">Pelayanan Dokter Umum</Link></li>
                   <li><Link href="/layanan-kami/kebidanan">Pelayanan Kebidanan</Link></li>
-                  <li><Link href="/layanan-kami/keperawatan">Pelayanan Keperawatan</Link></li>
+                  <li><Link href="/layanan-kami/ugd">Pelayanan UGD 24 Jam</Link></li>
                   <li><Link href="/layanan-kami/farmasi">Pelayanan Farmasi</Link></li>
                 </ul>
               </details>

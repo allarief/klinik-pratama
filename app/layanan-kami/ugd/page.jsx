@@ -2,8 +2,22 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function KeperawatanPage() {
+export default function ugdPage() {
   const perawatList = [
+    {
+      nama: "dr. Annisa Fadhilah Nurdina",
+      fotoProfil: "/image/dokter4.jpeg",
+      examPhoto: "/image/pemeriksaan1.jpg",
+      deskripsi:
+        "Dokter umum berpengalaman lebih dari 10 tahun dalam layanan kesehatan primer. Ramah dan teliti.",
+    },
+    {
+      nama: "dr Beta Selinia",
+      fotoProfil: "/image/dokter3.jpeg",
+      examPhoto: "/image/pemeriksaan2.jpg",
+      deskripsi:
+        "Memiliki kompetensi dalam pemeriksaan penyakit umum, tindakan ringan, serta konsultasi keluarga.",
+    },
     {
       nama: "H. Cece Nurdin S.Kep Ners MM",
       fotoProfil: "/image/perawat1.jpeg",
@@ -42,7 +56,7 @@ export default function KeperawatanPage() {
     <section className="px-6 py-16 max-w-6xl mx-auto">
       {/* Judul */}
       <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
-        Pelayanan Keperawatan
+        Pelayanan UGD 24 Jam
       </h1>
 
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
@@ -52,7 +66,7 @@ export default function KeperawatanPage() {
 
       {/* List Perawat */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
-        Tenaga Perawat Kami
+        Tenaga Pelayanan UGD Kami
       </h2>
 
       <div className="space-y-10">
