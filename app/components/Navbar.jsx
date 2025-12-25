@@ -153,8 +153,11 @@ export default function Navbar() {
                 <ul className="mt-2 pl-5 space-y-2">
                   <li><Link href="/layanan-kami/dokter-umum">Pelayanan Dokter Umum</Link></li>
                   <li><Link href="/layanan-kami/kebidanan">Pelayanan Kebidanan</Link></li>
-                  <li><Link href="/layanan-kami/ugd">Pelayanan UGD 24 Jam</Link></li>
+                  <li><Link href="/layanan-kami/ugd">Pelayanan Tindakan Gawat Darurat</Link></li>
                   <li><Link href="/layanan-kami/farmasi">Pelayanan Farmasi</Link></li>
+                  <li><Link href="/layanan-kami/usg">Pelayanan USG</Link></li>
+                  <li><Link href="/layanan-kami/ekg">Pelayanan EKG</Link></li>
+                  <li><Link href="/layanan-kami/khitan">Pelayanan Bedah Minor & Khitan</Link></li>
                 </ul>
               </details>
             </li>
