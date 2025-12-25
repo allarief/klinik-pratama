@@ -53,9 +53,9 @@ export default function EKGPage() {
         kardiovaskular lainnya untuk diagnosis dini dan penanganan yang tepat.
       </p>
 
-      {/* List Bidan */}
+      {/* List Dokter */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
-        Tenaga Kesehatan Kami
+        Tenaga Dokter Kami
       </h2>
 
       <div className="space-y-10">

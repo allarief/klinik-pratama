@@ -49,7 +49,7 @@ export default function USGPage() {
 
       {/* List Bidan */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
-        Tenaga Bidan Kami
+        Tenaga Dokter Kami
       </h2>
 
       <div className="space-y-10">

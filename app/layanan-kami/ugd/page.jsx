@@ -59,7 +59,7 @@ export default function ugdPage() {
   return (
     <section className="px-6 py-16 max-w-6xl mx-auto">
       <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
-        Pelayanan UGD 24 Jam
+        Pelayanan Tindakan Gawat Darurat
       </h1>
 
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
