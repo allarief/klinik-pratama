@@ -82,7 +82,7 @@ export default function Navbar() {
                     className="block px-3 py-2 hover:bg-green-50"
                     onClick={() => setOpenDropdown(false)}
                   >
-                    Pelayanan UGD 24 Jam
+                    Pelayanan Tindakan Gawat Darurat
                   </Link>
                 </li>
                 <li>
@@ -92,6 +92,33 @@ export default function Navbar() {
                     onClick={() => setOpenDropdown(false)}
                   >
                     Pelayanan Farmasi
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/usg"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan USG
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/ekg"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan EKG
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/layanan-kami/khitan"
+                    className="block px-3 py-2 hover:bg-green-50"
+                    onClick={() => setOpenDropdown(false)}
+                  >
+                    Pelayanan Bedah Minor & Khitan
                   </Link>
                 </li>
               </ul>

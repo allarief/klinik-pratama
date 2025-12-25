@@ -3,14 +3,21 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export default function USGPage() {
+export default function EKGPage() {
   const bidanList = [
     {
       nama: "dr. Annisa Fadhilah Nurdina",
       fotoProfil: "/image/dokter4.jpeg",
-      examPhoto: "/image/pelusg1.jpeg",
+      examPhoto: "/image/pelekg1.jpeg",
       deskripsi:
-        "fokus pada pelayanan ultrasonografi (USG) untuk kehamilan dan pemeriksaan organ internal lainnya dengan teknologi terkini.",
+        "fokus pada pelayanan elektrokardiografi (EKG) untuk diagnosis dan pemantauan kondisi jantung dengan teknologi modern.",
+    },
+    {
+      nama: "dr Beta Selinia",
+      fotoProfil: "/image/dokter3.jpeg",
+      examPhoto: "/image/pelekg2.jpeg",
+      deskripsi:
+        "ekspert dalam interpretasi hasil EKG dan memberikan rekomendasi medis yang tepat untuk kesehatan jantung pasien.",
     },
   ];
 
@@ -36,20 +43,19 @@ export default function USGPage() {
     <section className="px-6 py-16 max-w-6xl mx-auto">
       {/* Judul */}
       <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
-        Pelayanan USG
+        Pelayanan EKG (Elektrokardiografi)
       </h1>
 
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-        Pelayanan USG (Ultrasonografi) di Klinik Pratama Al-Mughni
-        menggunakan teknologi terkini untuk memberikan gambaran visual yang jelas
-        mengenai kondisi janin dan organ internal lainnya. Dengan tenaga bidan
-        berpengalaman, kami memastikan setiap pemeriksaan dilakukan dengan
-        profesionalisme dan kenyamanan pasien sebagai prioritas utama.
+        Pelayanan Elektrokardiografi (EKG) kami menyediakan pemeriksaan jantung
+        non-invasif yang cepat dan akurat. Dengan teknologi modern, kami
+        membantu mendeteksi gangguan irama jantung, iskemia, dan kondisi
+        kardiovaskular lainnya untuk diagnosis dini dan penanganan yang tepat.
       </p>
 
       {/* List Bidan */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
-        Tenaga Bidan Kami
+        Tenaga Kesehatan Kami
       </h2>
 
       <div className="space-y-10">

@@ -8,7 +8,7 @@ export default function KebidananPage() {
     {
       nama: "Bidan Hj. Iis Sadariah,STR Keb.",
       fotoProfil: "/image/bdn4.jpeg",
-      examPhoto: "/image/pelbdn5.jpg",
+      examPhoto: "/image/pelbdn7.jpeg",
       deskripsi:
         "fokus pada pelayanan kebidanan komprehensif mulai dari kehamilan hingga persalinan dan perawatan pasca melahirkan.",
     },

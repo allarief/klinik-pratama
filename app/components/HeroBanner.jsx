@@ -47,7 +47,7 @@ export default function HeroBanner() {
         <div className="flex-1 flex justify-center">
           <div className="rounded-2xl shadow-xl overflow-hidden border border-gray-100 bg-white">
             <img
-              src="/image/banner2.jpeg"
+              src="/image/owner2.jpeg"
               alt="Klinik Image"
               className="w-full max-w-md object-cover"
             />

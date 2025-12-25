@@ -14,7 +14,7 @@ export default function DokterUmumPage() {
     {
       nama: "dr Beta Selinia",
       fotoProfil: "/image/dokter3.jpeg",
-      examPhoto: "/image/peldktr2.jpeg",
+      examPhoto: "/image/peldktr1.jpeg",
       deskripsi:
         "Memiliki kompetensi dalam pemeriksaan penyakit umum, tindakan ringan, serta konsultasi keluarga.",
     },

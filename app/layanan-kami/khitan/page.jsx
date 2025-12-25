@@ -1,16 +1,24 @@
-
 "use client";
 import { useState } from "react";
 import Image from "next/image";
 
-export default function USGPage() {
+export default function KhitanPage() {
   const bidanList = [
     {
       nama: "dr. Annisa Fadhilah Nurdina",
+      jabatan: "Dokter",
       fotoProfil: "/image/dokter4.jpeg",
-      examPhoto: "/image/pelusg1.jpeg",
+      examPhoto: "/image/pelkhitan1.jpeg",
       deskripsi:
-        "fokus pada pelayanan ultrasonografi (USG) untuk kehamilan dan pemeriksaan organ internal lainnya dengan teknologi terkini.",
+        "fokus pada pelayanan bedah minor dan khitan dengan pendekatan yang aman, nyaman, dan profesional.",
+    },
+    {
+      nama: "H. Cece Nurdin S.Kep Ners MM",
+      jabatan: "Perawat",
+      fotoProfil: "/image/perawat1.jpeg",
+      examPhoto: "/image/pelkhitan2.jpeg",
+      deskripsi:
+        "berpengalaman dalam mendampingi prosedur khitan serta memberikan perawatan pasca tindakan dengan pendekatan yang ramah dan profesional.",
     },
   ];
 
@@ -34,22 +42,17 @@ export default function USGPage() {
 
   return (
     <section className="px-6 py-16 max-w-6xl mx-auto">
-      {/* Judul */}
       <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
-        Pelayanan USG
+        Pelayanan Bedah Minor & Khitan
       </h1>
 
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-        Pelayanan USG (Ultrasonografi) di Klinik Pratama Al-Mughni
-        menggunakan teknologi terkini untuk memberikan gambaran visual yang jelas
-        mengenai kondisi janin dan organ internal lainnya. Dengan tenaga bidan
-        berpengalaman, kami memastikan setiap pemeriksaan dilakukan dengan
-        profesionalisme dan kenyamanan pasien sebagai prioritas utama.
+        Pelayanan bedah minor dan khitan kami dilakukan oleh tenaga medis
+        profesional dengan pengalaman luas.
       </p>
 
-      {/* List Bidan */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
-        Tenaga Bidan Kami
+        Tenaga Kesehatan Kami
       </h2>
 
       <div className="space-y-10">
@@ -67,12 +70,20 @@ export default function USGPage() {
                 className="object-contain p-4"
               />
 
-              <span className="absolute top-3 left-3 bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow">
-                Dokter
+              {/* BADGE JABATAN */}
+              <span
+                className={`absolute top-3 left-3 text-white text-xs font-medium px-3 py-1 rounded-full shadow
+                  ${
+                    bidan.jabatan === "Dokter"
+                      ? "bg-green-600"
+                      : "bg-green-600"
+                  }`}
+              >
+                {bidan.jabatan}
               </span>
             </div>
 
-            {/* Content */}
+            {/* CONTENT */}
             <div className="p-6 md:w-2/3 flex flex-col justify-center">
               <h3 className="font-semibold text-2xl text-green-800">
                 {bidan.nama}
@@ -100,16 +111,11 @@ export default function USGPage() {
 
       {/* MODAL */}
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
           <div className="relative max-w-4xl w-full rounded-2xl overflow-hidden bg-white shadow-xl">
             <button
               onClick={closeModal}
-              aria-label="Close"
-              className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition"
+              className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow hover:bg-gray-100"
             >
               ✕
             </button>

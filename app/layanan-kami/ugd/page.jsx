@@ -6,29 +6,33 @@ export default function ugdPage() {
   const perawatList = [
     {
       nama: "dr. Annisa Fadhilah Nurdina",
+      jabatan: "Dokter",
       fotoProfil: "/image/dokter4.jpeg",
-      examPhoto: "/image/pemeriksaan1.jpg",
+      examPhoto: "/image/pelugd1.jpeg",
       deskripsi:
         "Dokter umum berpengalaman lebih dari 10 tahun dalam layanan kesehatan primer. Ramah dan teliti.",
     },
     {
       nama: "dr Beta Selinia",
+      jabatan: "Dokter",
       fotoProfil: "/image/dokter3.jpeg",
-      examPhoto: "/image/pemeriksaan2.jpg",
+      examPhoto: "/image/pelugd2.jpeg",
       deskripsi:
         "Memiliki kompetensi dalam pemeriksaan penyakit umum, tindakan ringan, serta konsultasi keluarga.",
     },
     {
       nama: "H. Cece Nurdin S.Kep Ners MM",
+      jabatan: "Perawat",
       fotoProfil: "/image/perawat1.jpeg",
-      examPhoto: "/image/pemeriksaan1.jpg",
+      examPhoto: "/image/pelugd3.jpeg",
       deskripsi:
         "Perawat berpengalaman dalam pelayanan keperawatan umum, pemeriksaan tanda vital, dan pendampingan pasien dengan pendekatan yang ramah serta profesional.",
     },
     {
       nama: "Dilla Anindita, AMK",
+      jabatan: "Perawat",
       fotoProfil: "/image/perawat2.jpeg",
-      examPhoto: "/image/pemeriksaan2.jpg",
+      examPhoto: "/image/pelugd4.jpeg",
       deskripsi:
         "Ahli dalam perawatan luka, edukasi kesehatan dasar, serta memberikan dukungan kepada pasien untuk meningkatkan kualitas pemulihan.",
     },
@@ -54,7 +58,6 @@ export default function ugdPage() {
 
   return (
     <section className="px-6 py-16 max-w-6xl mx-auto">
-      {/* Judul */}
       <h1 className="text-4xl font-bold text-center mb-4 text-green-700">
         Pelayanan UGD 24 Jam
       </h1>
@@ -64,7 +67,6 @@ export default function ugdPage() {
         mendukung kenyamanan dan keselamatan pasien selama berada di klinik.
       </p>
 
-      {/* List Perawat */}
       <h2 className="text-2xl font-bold mb-8 text-green-700">
         Tenaga Pelayanan UGD Kami
       </h2>
@@ -84,8 +86,16 @@ export default function ugdPage() {
                 className="object-contain p-4"
               />
 
-              <span className="absolute top-3 left-3 bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow">
-                Perawat
+              {/* BADGE JABATAN */}
+              <span
+                className={`absolute top-3 left-3 text-white text-xs font-medium px-3 py-1 rounded-full shadow
+                  ${
+                    perawat.jabatan === "Dokter"
+                      ? "bg-green-600"
+                      : "bg-green-600"
+                  }`}
+              >
+                {perawat.jabatan}
               </span>
             </div>
 
@@ -117,16 +127,11 @@ export default function ugdPage() {
 
       {/* MODAL */}
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
           <div className="relative max-w-4xl w-full rounded-2xl overflow-hidden bg-white shadow-xl">
             <button
               onClick={closeModal}
-              aria-label="Close"
-              className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow hover:bg-gray-100 transition"
+              className="absolute top-4 right-4 z-20 bg-white rounded-full p-2 shadow hover:bg-gray-100"
             >
               ✕
             </button>
