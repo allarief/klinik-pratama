@@ -22,27 +22,43 @@ export async function GET(req) {
 
   const userAgent = req.headers.get("user-agent");
 
-  // 🚫 Abaikan bot
+  // Ambil data counter sekarang (buat fallback)
+  const currentVisit = await prisma.websiteVisit.findUnique({
+    where: { id: 1 },
+  });
+
+  // 🚫 Jika bot → jangan tambah, tapi tetap kirim data
   if (isBot(userAgent)) {
-    return Response.json({ message: "Bot ignored" });
+    return Response.json({
+      total: Number(currentVisit?.total || 0),
+      daily: currentVisit?.daily || 0,
+      weekly: currentVisit?.weekly || 0,
+      monthly: currentVisit?.monthly || 0,
+      yearly: currentVisit?.yearly || 0,
+    });
   }
 
   // 🕒 Awal hari ini
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
 
-  // 🔎 Cek apakah IP sudah dihitung hari ini
+  // Cek apakah IP sudah dihitung hari ini
   const existingVisitor = await prisma.visitorLog.findFirst({
     where: {
       ip,
-      visitDate: {
-        gte: todayStart,
-      },
+      visitDate: { gte: todayStart },
     },
   });
 
+  // Kalau sudah dihitung → jangan tambah, tapi tetap kirim data
   if (existingVisitor) {
-    return Response.json({ message: "Already counted today" });
+    return Response.json({
+      total: Number(currentVisit?.total || 0),
+      daily: currentVisit?.daily || 0,
+      weekly: currentVisit?.weekly || 0,
+      monthly: currentVisit?.monthly || 0,
+      yearly: currentVisit?.yearly || 0,
+    });
   }
 
   // Simpan visitor baru
@@ -50,10 +66,7 @@ export async function GET(req) {
     data: { ip, userAgent },
   });
 
-  const visit = await prisma.websiteVisit.findUnique({
-    where: { id: 1 },
-  });
-
+  const visit = currentVisit;
   const last = visit ? new Date(visit.lastHit) : now;
 
   const isNewDay =
@@ -65,7 +78,6 @@ export async function GET(req) {
     last.getMonth() !== now.getMonth() ||
     last.getFullYear() !== now.getFullYear();
 
-  // ✅ FIX TYPO DI SINI
   const isNewYear =
     last.getFullYear() !== now.getFullYear();
 
@@ -95,7 +107,7 @@ export async function GET(req) {
   });
 
   return Response.json({
-    total: Number(updated.total), // BigInt → Number
+    total: Number(updated.total),
     daily: updated.daily,
     weekly: updated.weekly,
     monthly: updated.monthly,
