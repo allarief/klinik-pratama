@@ -8,65 +8,23 @@ function getWeekNumber(date) {
 }
 
 function isBot(userAgent) {
-  if (!userAgent) return true;
+  if (!userAgent) return false; // kalau mau hitung semua, ubah ke false
   return /bot|crawl|spider|slurp|google|bing|yandex/i.test(userAgent);
 }
 
 export async function GET(req) {
   const now = new Date();
-
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip") ||
-    "unknown";
-
   const userAgent = req.headers.get("user-agent");
 
-  // Ambil data counter sekarang (buat fallback)
-  const currentVisit = await prisma.websiteVisit.findUnique({
+  // 🚫 Skip bot (hapus if ini kalau mau bot ikut dihitung)
+  if (isBot(userAgent)) {
+    return Response.json({ message: "Bot ignored" });
+  }
+
+  const visit = await prisma.websiteVisit.findUnique({
     where: { id: 1 },
   });
 
-  // 🚫 Jika bot → jangan tambah, tapi tetap kirim data
-  if (isBot(userAgent)) {
-    return Response.json({
-      total: Number(currentVisit?.total || 0),
-      daily: currentVisit?.daily || 0,
-      weekly: currentVisit?.weekly || 0,
-      monthly: currentVisit?.monthly || 0,
-      yearly: currentVisit?.yearly || 0,
-    });
-  }
-
-  // 🕒 Awal hari ini
-  const todayStart = new Date();
-  todayStart.setHours(0, 0, 0, 0);
-
-  // Cek apakah IP sudah dihitung hari ini
-  const existingVisitor = await prisma.visitorLog.findFirst({
-    where: {
-      ip,
-      visitDate: { gte: todayStart },
-    },
-  });
-
-  // Kalau sudah dihitung → jangan tambah, tapi tetap kirim data
-  if (existingVisitor) {
-    return Response.json({
-      total: Number(currentVisit?.total || 0),
-      daily: currentVisit?.daily || 0,
-      weekly: currentVisit?.weekly || 0,
-      monthly: currentVisit?.monthly || 0,
-      yearly: currentVisit?.yearly || 0,
-    });
-  }
-
-  // Simpan visitor baru
-  await prisma.visitorLog.create({
-    data: { ip, userAgent },
-  });
-
-  const visit = currentVisit;
   const last = visit ? new Date(visit.lastHit) : now;
 
   const isNewDay =
