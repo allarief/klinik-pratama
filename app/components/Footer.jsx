@@ -9,11 +9,13 @@ const Footer = () => {
   useEffect(() => {
     async function fetchVisits() {
       try {
-        const res = await fetch("/api/visit", {
-          cache: "no-store",
-        });
+        const res = await fetch("/api/visit", { cache: "no-store" });
         const data = await res.json();
-        setVisits(data);
+
+        // hanya simpan kalau ada data counter
+        if (typeof data.total !== "undefined") {
+          setVisits(data);
+        }
       } catch (error) {
         console.error("Failed to fetch visitor count:", error);
       }
@@ -25,7 +27,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-green-900 to-green-800 text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
-
+        
         {/* Logo / Klinik */}
         <div>
           <h2 className="text-3xl font-bold text-buttercup-300">
@@ -43,62 +45,28 @@ const Footer = () => {
             Navigasi
           </h3>
           <ul className="space-y-2">
-            <li>
-              <a
-                href="/"
-                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
-              >
-                Beranda
-              </a>
-            </li>
-            <li>
-              <a
-                href="/tentang-kami"
-                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
-              >
-                Tentang Kami
-              </a>
-            </li>
-            <li>
-              <a
-                href="/fasilitas"
-                className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition"
-              >
-                Fasilitas
-              </a>
-            </li>
+            <li><a href="/" className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition">Beranda</a></li>
+            <li><a href="/tentang-kami" className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition">Tentang Kami</a></li>
+            <li><a href="/fasilitas" className="text-gray-200 hover:text-white hover:underline underline-offset-4 transition">Fasilitas</a></li>
           </ul>
         </div>
 
-        {/* Kontak & Sosial Media */}
+        {/* Kontak */}
         <div>
           <h3 className="text-lg font-semibold mb-3 text-buttercup-300">
             Kontak & Media Sosial
           </h3>
-
           <p className="text-gray-200">Email: info@klinikalmughni.com</p>
           <p className="text-gray-200 mt-1">Telp: 08156012251</p>
 
           <div className="flex space-x-4 mt-4">
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/almughnitsm?igsh=MThrOGFidnB4Y2twMw=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow 
-                         ring-2 ring-white/10 hover:ring-white/30 text-pink-400 hover:text-pink-300"
-            >
+            <a href="https://www.instagram.com/almughnitsm?igsh=MThrOGFidnB4Y2twMw==" target="_blank" rel="noopener noreferrer"
+              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow ring-2 ring-white/10 hover:ring-white/30 text-pink-400 hover:text-pink-300">
               <FaInstagram size={22} />
             </a>
 
-            {/* TikTok */}
-            <a
-              href="https://www.tiktok.com/@klinik.almughni?_r=1&_t=ZS-91uFnhQjZOX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow 
-                         ring-2 ring-white/10 hover:ring-white/30 text-gray-200 hover:text-white"
-            >
+            <a href="https://www.tiktok.com/@klinik.almughni?_r=1&_t=ZS-91uFnhQjZOX" target="_blank" rel="noopener noreferrer"
+              className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition shadow ring-2 ring-white/10 hover:ring-white/30 text-gray-200 hover:text-white">
               <FaTiktok size={22} />
             </a>
           </div>
@@ -115,7 +83,9 @@ const Footer = () => {
         <div>
           👁️ Total Pengunjung:{" "}
           <span className="font-semibold text-white">
-            {visits ? visits.total.toLocaleString("id-ID") : "..."}
+            {typeof visits?.total !== "undefined"
+              ? Number(visits.total).toLocaleString("id-ID")
+              : "..."}
           </span>
         </div>
 
