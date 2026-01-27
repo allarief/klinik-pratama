@@ -8,13 +8,21 @@ generator client {
 }
 
 model WebsiteVisit {
-  id        Int      @id
-  total     BigInt   @default(0)
-  daily     Int      @default(0)
-  weekly    Int      @default(0)
-  monthly   Int      @default(0)
-  yearly    Int      @default(0)
-  lastHit   DateTime @default(now())
+  id         Int     @id
+
+  total      BigInt  @default(0)
+
+  daily      Int     @default(0)
+  dailyDate  String  @default("")
+
+  weekly     Int     @default(0)
+  weeklyKey  String  @default("")
+
+  monthly    Int     @default(0)
+  monthlyKey String  @default("")
+
+  yearly     Int     @default(0)
+  yearlyKey  String  @default("")
 }
 
 model VisitorLog {
